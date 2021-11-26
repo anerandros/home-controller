@@ -9,7 +9,7 @@
     Server status <strong>{{serverStatus}}</strong>
   </mat-card>
   
-  <mat-grid-list cols="2" rowHeight="10:1">
+  <mat-grid-list *ngIf="serverStatus === 'ONLINE'" cols="2" rowHeight="10:1">
     <mat-grid-tile>
       <strong style="color: darkgreen;">ONLINE</strong>
     </mat-grid-tile>

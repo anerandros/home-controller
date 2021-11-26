@@ -11,7 +11,7 @@ import { PlantsService } from 'src/_service/plants.service';
 export class AppComponent implements OnInit {
   title = 'home-controller';
 
-  public serverStatus: string = 'OFFLINE';
+  public serverStatus: 'ONLINE' | 'OFFLINE' = 'OFFLINE';
   public onlineMS: any = [];
   public offlineMS: any = [];
 
@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.getServerStatus();
+    setInterval(() => { this.getServerStatus() }, 60*1000);
   }
 
   private getServerStatus() {
@@ -41,10 +42,6 @@ export class AppComponent implements OnInit {
               this.plantsService.setPlantsUrl(currMsObj.ip);
             }
           });
-  
-          setInterval(() => { this.getServerStatus() }, 60*1000);
-          setInterval(() => { this.getOnlineMs() }, 60*1000);
-          setInterval(() => { this.getOfflineMs() }, 60*1000);
         }
       });
   }
