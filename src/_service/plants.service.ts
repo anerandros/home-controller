@@ -16,7 +16,15 @@ export class PlantsService {
     ) { }
 
   setPlantsUrl(url: string) {
-    this.url = url;
+    this.url = 'http://' + url + ':4000';
+  }
+
+  getPlantsStatus() {
+    this.checkPlantsUrl();
+    return this.http.get(this.url + '/')
+      .pipe(
+        catchError(this.handleError('openPlants', {}))
+      );
   }
 
   openPlants() {

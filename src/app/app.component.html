@@ -19,16 +19,16 @@
 
     <mat-grid-tile>
       <ul>
-        <li *ngFor="let ms of onlineMS">{{ms}}</li>
+        <li *ngFor="let onms of onlineMS">{{onms.name}} - {{onms.ip}}</li>
       </ul>
     </mat-grid-tile>
     <mat-grid-tile>
       <ul>
-        <li *ngFor="let ms of offlineMS">{{ms}}</li>
+        <li *ngFor="let offms of offlineMS">{{offms.name}} - {{offms.ip}}</li>
       </ul>
     </mat-grid-tile>
 
-    <div *ngIf="plantsMicroservice.status === 'ko'">
+    <div *ngIf="isPlantsMsOnline();">
       <mat-grid-tile>
         Microservizio acqua:
       </mat-grid-tile>
